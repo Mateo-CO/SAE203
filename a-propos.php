@@ -44,7 +44,7 @@ require_once('./ressources/includes/connexion-bdd.php');
                 </p>
 
                 <ul class="liste-axes">
-                    <li>La culture contemporaine et langues étrangères (500 heures) </li>
+                    <li>La culture contemporaine et langues étrangères (2 heures) </li>
                     <li>La culture scientifique et technique (700 heures) </li>
                     <li>La culture communicationnelle (600 heures)</li>
                 </ul>
