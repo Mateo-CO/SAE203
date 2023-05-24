@@ -23,6 +23,9 @@ $pageCourante = "articles";
 $racineURL = $_SERVER['REQUEST_URI'];
 
 $URLCreation = "{$racineURL}/creation.php";
+
+$nbrArt=$clientMySQL->query("SELECT COUNT(*) AS 'NbrArt' FROM article");
+
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +40,11 @@ $URLCreation = "{$racineURL}/creation.php";
     <?php require_once('../ressources/includes/menu-principal.php'); ?>
     <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6 justify-between flex">
-            <h1 class="text-3xl font-bold text-gray-900">Liste A REMPLACER</h1>
+            <h1 class="text-3xl font-bold text-gray-900">Liste Articles</h1>
             <a href="<?php echo $URLCreation ?>" class="block font-bold rounded-md bg-indigo-600 py-2 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Ajouter un nouvel article</a>
+        </div>
+        <div class="mx-auto max-w-7xl ">
+            <p class="text-gray-500">Nombre d'articles : <?php echo $nbrArt->fetch()["NbrArt"]; ?></p>
         </div>
     </header>
     <main>
@@ -50,7 +56,7 @@ $URLCreation = "{$racineURL}/creation.php";
                             <th class="font-bold pl-8 py-5 text-left">Id</th>
                             <th class="font-bold pl-8 py-5 text-left">Titre</th>
                             <th class="font-bold pl-8 py-5 text-left">Chapô</th>
-                            <th class="font-bold pl-8 py-5 text-left">A REMPLACER</th>
+                            <th class="font-bold pl-8 py-5 text-left">Date de Création</th>
                             <th class="font-bold pl-8 py-5 text-left">Auteur</th>
                             <th class="pl-8 py-5"></th>
                         </tr>
