@@ -5,7 +5,11 @@ $listeMessagesCommande = $clientMySQL->prepare('SELECT * FROM message');
 $listeMessagesCommande->execute();
 $listeMessages = $listeMessagesCommande->fetchAll();
 
+$nbrMsg=$clientMySQL->query("SELECT COUNT(*) AS 'NbrMsg' FROM message ");
+
+
 $pageCourante = "messages";
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +25,7 @@ $pageCourante = "messages";
     <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl py-6">
             <h1 class="text-3xl font-bold text-gray-900">Liste messages reçus</h1>
-            <p class="text-gray-500">Nombre de messages : A REMPLACER</p>
+            <p class="text-gray-500">Nombre de messages : <?php echo $nbrMsg->fetch()["NbrMsg"]; ?></p>
         </div>
     </header>
     <main>
@@ -33,11 +37,11 @@ $pageCourante = "messages";
                         <tr>
                             <th class="font-bold pl-8 py-5 text-left">Id</th>
                             <th class="font-bold pl-8 py-5 text-left">Nom</th>
-                            <th class="font-bold pl-8 py-5 text-left">A CHANGER</th>
-                            <th class="font-bold pl-8 py-5 text-left">A CHANGER</th>
-                            <th class="font-bold pl-8 py-5 text-left">A CHANGER</th>
-                            <th class="font-bold pl-8 py-5 text-left">A CHANGER</th>
-                            <th class="font-bold pl-8 py-5 text-left">A CHANGER</th>
+                            <th class="font-bold pl-8 py-5 text-left">Prénom</th>
+                            <th class="font-bold pl-8 py-5 text-left">Email</th>
+                            <th class="font-bold pl-8 py-5 text-left">Contenu</th>
+                            <th class="font-bold pl-8 py-5 text-left">Type</th>
+                            <th class="font-bold pl-8 py-5 text-left">Date de Création</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +52,10 @@ $pageCourante = "messages";
                                 <td class="pl-8 p-4 font-bold"><?php echo $message["id"]; ?></td>
                                 <td class="pl-8 p-4"><?php echo $message["nom"]; ?></td>
                                 <td class="pl-8 p-4"><?php echo $message["prenom"]; ?></td>
+                                <td class="pl-8 p-4"><?php echo $message["email"]; ?></td>
+                                <td class="pl-8 p-4"><?php echo $message["contenu"]; ?></td>
+                                <td class="pl-8 p-4"><?php echo $message["type"]; ?></td>
+                                <td class="pl-8 p-4"><?php echo $message["date_creation"]; ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
