@@ -11,4 +11,4 @@ __MACOSX/
 *.tmp.*
 *.env.prod
 *.env.dev
-
+*.DS_Store 
