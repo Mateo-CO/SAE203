@@ -1,6 +1,13 @@
 <?php
 require_once('../../ressources/includes/connexion-bdd.php');
 
+session_start();
+
+if(!isset($_SESSION["id"])){
+   $redirection="../login.php";
+   header("location:$redirection");
+}
+
 $commande = $clientMySQL->prepare('
     SELECT
         ar.id,
